@@ -15,8 +15,18 @@ const app = express();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Cookie parser
 app.use(cookieParser());
+
+// index route display
 app.use(express.static(path.join(__dirname, "public")));
+
+//mount routes
+app.use(require("./src/routes"));
+
+// mount middleware functions
+app.use(require("./src/middlewares/error.middleware"));
 
 //export app to server @./bin/www
 module.exports = app;

@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new Schema({
   name: {
@@ -11,7 +13,7 @@ const UserSchema = new Schema({
     required: [true, "Please add an email"],
     unique: true,
     match: [
-      /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/,
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       "Please add a valid email",
     ],
   },
@@ -28,4 +30,29 @@ const UserSchema = new Schema({
     default: Date.now,
   },
 });
+
+// Encrypt password using bcrypt
+UserSchema.pre("save", async function (next) {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// sign jwt and return
+UserSchema.methods.getSignedJwtToken = function () {
+  return jwt.sign(
+    {
+      id: this._id,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_EXPIRE,
+    }
+  );
+};
+
+// match user entered password to hashed password in database
+UserSchema.methods.matchPassword = async function (eneteredPassword) {
+  return await bcrypt.compare(eneteredPassword, this.password);
+};
+
 module.exports = model("User", UserSchema);
