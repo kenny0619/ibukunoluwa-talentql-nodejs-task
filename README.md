@@ -1,7 +1,7 @@
 # ibukunoluwa-talentql-nodejs-task
 
 Create a RESTful API that supports the posts functionality of Facebook.\
-clone repository and npm install
+clone repository, initialize with npm init and install with npm install
 
 create config.env file in config folder\
 create a mongo database\
