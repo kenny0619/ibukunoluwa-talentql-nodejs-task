@@ -1,0 +1,738 @@
+{
+	"info": {
+		"_postman_id": "a60505fc-3a1c-4195-bf16-e7ef2fab93a7",
+		"name": "TALENTQL INTERVIEW TASK API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abraham ake\",\r\n    \"email\": \"akerele@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "add user to the db"
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ibukun kehinde\",\r\n    \"email\": \"ibk@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-dCOm7QJMBkP8yEkppmcYDARRzwo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 May 2021 18:30:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjEzNmQ1MDA5OTM4NTgxMDE5OTNkMSIsImlhdCI6MTYyMjIyNjY0NiwiZXhwIjoxNjI0ODE4NjQ2fQ.qYZ9Gal3gzBSQM6xVlCORxlqYJMLZpd9dOXudyGktpQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "login user"
+					},
+					"response": [
+						{
+							"name": "Login user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBkMDNjZDMzOGQ0MmMyNGY5MGJiYSIsImlhdCI6MTYyMjIyNjU4NiwiZXhwIjoxNjI0ODE4NTg2fQ.54fRhjx8PaTacy2CoObmJ5IPAE6B6n56DMYU4LHi_kg; Path=/; Expires=Sun, 27 Jun 2021 18:29:46 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-n/Nh/6prBukxGNWGOpD70w61kmc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 May 2021 18:29:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBkMDNjZDMzOGQ0MmMyNGY5MGJiYSIsImlhdCI6MTYyMjIyNjU4NiwiZXhwIjoxNjI0ODE4NTg2fQ.54fRhjx8PaTacy2CoObmJ5IPAE6B6n56DMYU4LHi_kg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Loggedin User via token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						},
+						"description": "get logged in user profile"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "Publish post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"TALENTQL INTERVIEW API TASK testing\",\r\n    \"content\": \" well i dont know how to write tests yet but i will learn in the limited time i have and i will succeed with it..\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						},
+						"description": "create a post"
+					},
+					"response": [
+						{
+							"name": "Publish post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBkMDNjZDMzOGQ0MmMyNGY5MGJiYSIsImlhdCI6MTYyMjIyNTIwNCwiZXhwIjoxNjI0ODE3MjA0fQ.gf_F0envZsNrjpStN7iGBRG73ECePTEClUr0P3BXBEE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"TALENTQL INTERVIEW API TASK\",\r\n    \"content\": \"i dont know how to write tests yet but i will learn in the limited time i have and i will succeed with it..\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "339"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"153-QcpSpII8YxIRVBowmm9r26uGyAQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 May 2021 18:10:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"60b1320600993858101993cf\",\n        \"title\": \"TALENTQL INTERVIEW API TASK\",\n        \"content\": \"i dont know how to write tests yet but i will learn in the limited time i have and i will succeed with it..\",\n        \"createdAt\": \"2021-05-28T18:10:14.370Z\",\n        \"updatedAt\": \"2021-05-28T18:10:14.370Z\",\n        \"slug\": \"talentql-interview-api-task\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch All posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						},
+						"description": "fetch all posts from the databse to the feed"
+					},
+					"response": [
+						{
+							"name": "Fetch All posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "367"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16f-IAEVaYg6Jdqcnvz/wwy1q8CplhA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 May 2021 18:32:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"pagination\": {},\n    \"data\": [\n        {\n            \"_id\": \"60b1371e00993858101993d2\",\n            \"title\": \"TALENTQL INTERVIEW API TASK\",\n            \"content\": \"i dont know how to write tests yet but i will learn in the limited time i have and i will succeed with it..\",\n            \"createdAt\": \"2021-05-28T18:31:58.803Z\",\n            \"updatedAt\": \"2021-05-28T18:31:58.803Z\",\n            \"slug\": \"talentql-interview-api-task\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBkMDNjZDMzOGQ0MmMyNGY5MGJiYSIsImlhdCI6MTYyMjIyNTIwNCwiZXhwIjoxNjI0ODE3MjA0fQ.gf_F0envZsNrjpStN7iGBRG73ECePTEClUr0P3BXBEE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"TALENTQL INTERVIEW EXERCISE TASKS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/posts/60b1ed9afb70ad3634ea173e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"60b1ed9afb70ad3634ea173e"
+							]
+						},
+						"description": "Make updates to a post"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Single post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/posts/60b1c6ec63291f466c28c6f7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"60b1c6ec63291f466c28c6f7"
+							]
+						},
+						"description": "fetch a particular post with id"
+					},
+					"response": [
+						{
+							"name": "Fetch Single post",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/posts/60b1371e00993858101993d2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"posts",
+										"60b1371e00993858101993d2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "339"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"153-Vnm2+ziUi1JZRuKbVYyAw1MSj7Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 May 2021 18:32:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"60b1371e00993858101993d2\",\n        \"title\": \"TALENTQL INTERVIEW API TASK\",\n        \"content\": \"i dont know how to write tests yet but i will learn in the limited time i have and i will succeed with it..\",\n        \"createdAt\": \"2021-05-28T18:31:58.803Z\",\n        \"updatedAt\": \"2021-05-28T18:31:58.803Z\",\n        \"slug\": \"talentql-interview-api-task\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBkMDNjZDMzOGQ0MmMyNGY5MGJiYSIsImlhdCI6MTYyMjIyNTIwNCwiZXhwIjoxNjI0ODE3MjA0fQ.gf_F0envZsNrjpStN7iGBRG73ECePTEClUr0P3BXBEE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/posts/60b1e3177448a7559c9416b3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"60b1e3177448a7559c9416b3"
+							]
+						},
+						"description": "Delete a post by id"
+					},
+					"response": [
+						{
+							"name": "Delete post",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBkMDNjZDMzOGQ0MmMyNGY5MGJiYSIsImlhdCI6MTYyMjIyNTIwNCwiZXhwIjoxNjI0ODE3MjA0fQ.gf_F0envZsNrjpStN7iGBRG73ECePTEClUr0P3BXBEE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/posts/60b1371e00993858101993d2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"posts",
+										"60b1371e00993858101993d2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 May 2021 18:33:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
