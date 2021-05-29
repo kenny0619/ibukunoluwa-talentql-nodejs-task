@@ -82,7 +82,9 @@ exports.fetchAllPosts = asyncHandler(async (req, res, next) => {
     success: true,
     count: posts.length,
     pagination,
-    data: posts,
+    payload: posts,
+    statusCode: 200,
+    error: null,
   });
 });
 
@@ -102,7 +104,9 @@ exports.fetchPost = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: post,
+    payload: post,
+    statusCode: 200,
+    error: null,
   });
 });
 
@@ -113,7 +117,9 @@ exports.fetchPost = asyncHandler(async (req, res, next) => {
  */
 exports.createPost = asyncHandler(async (req, res, next) => {
   const post = await Post.create(req.body);
-  res.status(201).json({ success: true, data: post });
+  res
+    .status(201)
+    .json({ success: true, payload: post, statusCode: 201, error: null });
 });
 
 /**
@@ -131,7 +137,9 @@ exports.editPost = asyncHandler(async (req, res, next) => {
       new ErrorResponse(`post not found with an id of ${req.params.id}`, 404)
     );
   }
-  res.status(200).json({ success: true, data: post });
+  res
+    .status(200)
+    .json({ success: true, payload: post, statusCode: 200, error: null });
 });
 
 /**
@@ -148,5 +156,7 @@ exports.deletePost = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(200).json({ success: true, data: {} });
+  res
+    .status(200)
+    .json({ success: true, payload: null, statusCode: 200, error: null });
 });
