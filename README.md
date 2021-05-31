@@ -11,4 +11,4 @@ JWT_SECRET=any-string-of-your-choice,\
 JWT_EXPIRE=30d || or-any-number-of-days-you-like,\
 JWT_cookie_EXPIRE=30 || or any-expiration-of-your-choosing
 
-After config, npm run start and npm run test to run integration test(test cases are attached to data from mongodb, set MONGO_URI=mongodb+srv://ibukunoluwa:5Nc7IVg5bXFwti9g@cluster0.3hilu.mongodb.net/task?authSource=admin&replicaSet=atlas-9fd18i-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true   OR ATTACH id, token , user and applicable data and from your own mock db data... )
+After config, npm run start and npm run test to run integration test(test cases are attached to data from mongodb ATTACH id, token , user and applicable data and from your own mock db data... )
